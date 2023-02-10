@@ -11,7 +11,7 @@ export function SearchForm() {
         required
       />
 
-      <button type="submit">
+      <button type="submit" title="Aperte para iniciar buscas">
         <MagnifyingGlass size={20} />
         Buscar
       </button>
