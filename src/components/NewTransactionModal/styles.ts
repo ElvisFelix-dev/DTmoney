@@ -24,6 +24,13 @@ export const Content = styled(Dialog.Content)`
 
   text-align: center;
 
+  @media (max-width: 720px) {
+    min-width: unset;
+    padding: 2rem 1.8rem;
+
+    width: 365px;
+  }
+
   form {
     margin-top: 2rem;
     display: flex;
@@ -70,6 +77,7 @@ export const Content = styled(Dialog.Content)`
   }
 `
 
+
 export const CloseButton = styled(Dialog.Close)`
   position: absolute;
   background: transparent;
@@ -93,6 +101,11 @@ export const TransactionType = styled(RadioGroup.Root)`
   grid-template-columns: repeat(2, minmax(240px, 1fr));
   gap: 1rem;
   margin-top: 0.5rem;
+
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+
 `
 
 interface TransactionTypeButtonProps {
@@ -139,5 +152,10 @@ export const TransactionTypeButton = styled(
 
   svg {
     color: ${(props) => props.theme.white};
+  }
+
+  @media (max-width: 720px) {
+    width: 100%;
+    flex-direction: column;
   }
 `
