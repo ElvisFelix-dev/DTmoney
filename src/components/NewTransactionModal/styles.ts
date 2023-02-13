@@ -77,7 +77,6 @@ export const Content = styled(Dialog.Content)`
   }
 `
 
-
 export const CloseButton = styled(Dialog.Close)`
   position: absolute;
   background: transparent;
@@ -105,7 +104,6 @@ export const TransactionType = styled(RadioGroup.Root)`
   @media (max-width: 720px) {
     grid-template-columns: 1fr;
   }
-
 `
 
 interface TransactionTypeButtonProps {
@@ -113,7 +111,7 @@ interface TransactionTypeButtonProps {
 }
 
 export const TransactionTypeButton = styled(
-  RadioGroup.Item
+  RadioGroup.Item,
 )<TransactionTypeButtonProps>`
   background: ${(props) => props.theme['gray-700']};
   padding: 1rem;
