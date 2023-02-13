@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Summary } from '../../components/Summary'
@@ -7,8 +8,12 @@ import {
   TransactionsContainer,
   TransactionsTable,
 } from './styles'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
 export function Transactions() {
+  const { transactions } = useContext(TransactionsContext)
+
   return (
     <div>
       <Header />
@@ -18,67 +23,23 @@ export function Transactions() {
         <SearchForm />
         <TransactionsTable>
           <tbody>
-            <tr>
-              <td>Desenvolvimento de site</td>
-              <td>
-                <PriceHighLight variant="income">R$ 12.000,00</PriceHighLight>
-              </td>
-              <td>Venda</td>
-              <td>13/04/2022</td>
-            </tr>
-
-            <tr>
-              <td>Burg King</td>
-              <td>
-                <PriceHighLight variant="outcome"> - R$ 58,00</PriceHighLight>
-              </td>
-              <td>Alimentação</td>
-              <td>10/02/2023</td>
-            </tr>
-
-            <tr>
-              <td>Condominio</td>
-              <td>
-                <PriceHighLight variant="outcome"> - R$ 200,00</PriceHighLight>
-              </td>
-              <td>Moradia</td>
-              <td>10/02/2023</td>
-            </tr>
-
-            <tr>
-              <td>Internet</td>
-              <td>
-                <PriceHighLight variant="outcome"> - R$ 90,00</PriceHighLight>
-              </td>
-              <td>Contas</td>
-              <td>10/02/2023</td>
-            </tr>
-
-            <tr>
-              <td>Aluguel da plataforma</td>
-              <td>
-                <PriceHighLight variant="income">R$ 100,00</PriceHighLight>
-              </td>
-              <td>Trabalhos</td>
-              <td>10/02/2023</td>
-            </tr>
-
-            <tr>
-              <td>Notebook</td>
-              <td>
-                <PriceHighLight variant="outcome"> - R$ 200,00</PriceHighLight>
-              </td>
-              <td>Acessorios</td>
-              <td>10/02/2023</td>
-            </tr>
-            <tr>
-              <td>Carro</td>
-              <td>
-                <PriceHighLight variant="income">R$ 10.000,00</PriceHighLight>
-              </td>
-              <td>Venda</td>
-              <td>10/02/2023</td>
-            </tr>
+            {transactions.map((transaction) => {
+              return (
+                <tr key={transaction.id}>
+                  <td>{transaction.description}</td>
+                  <td>
+                    <PriceHighLight variant={transaction.type}>
+                      {transaction.type === 'outcome' && '- '}
+                      {priceFormatter.format(transaction.price)}
+                    </PriceHighLight>
+                  </td>
+                  <td>{transaction.category}</td>
+                  <td>
+                    {dateFormatter.format(new Date(transaction.createdAt))}
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>

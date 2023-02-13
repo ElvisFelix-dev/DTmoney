@@ -17,12 +17,5 @@
   ],
   "rules": {
     "no-unused-vars": "off"
-  },
-  "prettier/prettier": [
-    "error",
-    {
-      "singleQuote": true,
-      "parser": "flow"
-    }
-  ]
+  }
 }
