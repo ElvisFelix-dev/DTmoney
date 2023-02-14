@@ -68,6 +68,11 @@ Projeto desenvolvido, durante a trilha Ignite Frontend. Para gestão financeira 
    ```sh
    npm run dev
    ```
+   
+5. Iniciar api fake
+   ```sh
+   npm run dev:server
+   ```
 
 <p align="right">(<a href="#topo">Para o topo</a>)</p>
 
